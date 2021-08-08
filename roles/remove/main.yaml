@@ -29,7 +29,7 @@
       state: absent
 
 - name: MySQL Remove
-  hosts: 192.168.200.102
+  hosts: 192.168.200.101
   tasks:
   - name: Stop MySQL Service
     service:
@@ -53,3 +53,4 @@
     file:
       path: /var/lib/mysql
       state: absent
+

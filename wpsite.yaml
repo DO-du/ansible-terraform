@@ -1,0 +1,17 @@
+
+- name: Database
+  hosts: dbserver
+  roles:
+    - database
+
+- name: Web
+  hosts: webserver
+  roles:
+    - web
+
+  post_tasks:
+    - name: Check Web
+      uri:
+        url: "http://{{ groups['webserver'][0] }}:{{ service_port }}/wordpress"
+        status_code: 200
+        return_content: yes
