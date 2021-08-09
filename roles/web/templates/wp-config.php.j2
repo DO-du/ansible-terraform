@@ -29,7 +29,7 @@ define( 'DB_USER', '{{ db['mysql_user_name'] }}' );
 define( 'DB_PASSWORD', '{{ db['mysql_user_passwd'] }}' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', "{{ groups['dbserver'][0] }}" );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

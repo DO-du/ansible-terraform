@@ -12,7 +12,7 @@
     state: present
 - name: Change Apache2 Service Ports
   template:
-    src: jinja/ports.conf.j2
+    src: ../templates/ports.conf.j2
     dest: /etc/apache2/ports.conf
   notify:
     - Restart Apache2 services
@@ -35,5 +35,5 @@
     dest: /var/www/html
 - name: Setting Wordpress Database Configuration
   template:
-    src: jinja/wp-config.php.j2
+    src: ../templates/wp-config.php.j2
     dest: "{{ web['wp_config'] }}"

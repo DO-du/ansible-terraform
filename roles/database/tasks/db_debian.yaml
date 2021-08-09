@@ -19,7 +19,13 @@
     login_unix_socket: "{{ db['mysql_sock'] }}"
     name: "{{ db['mysql_user_name'] }}"
     password: "{{ db['mysql_user_passwd'] }}"
-    host: localhost
+    host: "{{ groups['webserver'][0] }}"
     priv: wpdb.*:ALL,GRANT
     state: present
+- name: External Connection Setting
+  lineinfile:
+    path: /etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp: bind-address
+    line: bind-address=0.0.0.0
+  notify: Restart MySQL services
 

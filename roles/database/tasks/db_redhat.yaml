@@ -22,3 +22,11 @@
     host: localhost              
     priv: wpdb.*:ALL,GRANT
     state: present
+- name: External Connection Setting
+  lineinfile:
+    path: /etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp: bind-address
+    line: bind-address=0.0.0.0
+  notify: Restart MariaDB services
+
+
